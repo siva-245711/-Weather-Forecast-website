@@ -1,0 +1,79 @@
+
+.weather-widget-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 5px;
+    background-image:url("../Assets/weather.jpg");
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    background-size: cover; /* Scale the image to cover the entire element */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Optional: makes the background image fixed on scroll */
+  
+   }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+   
+  }
+  
+  .form-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form {
+    width: 100%;
+    position: relative;
+    display: flex;
+  }
+  
+  .search-bar {
+    flex-grow: 1;
+    padding: 10px 20px 10px 20px; /* Added padding to the right to make space for the button */
+    
+   font-size: 1.2rem;
+    border-radius: 5px; /* Rounded corners */
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+    height: 70px;
+  }
+  
+  .submit-button {
+    position: absolute;
+    right: 10px; /* Adjust as needed to fit the button inside the search bar */
+    top: 40%; /* Adjust this value to move the button up or down */
+    transform: translateY(-50%);
+    padding: 5px 15px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to right, #007bff, #00c6ff); /* Button gradient */
+    color: white;
+    cursor: pointer;
+    outline: none;
+    height: 50px;
+  }
+  
+  .submit-button:hover {
+    background: linear-gradient(to right, #00c6ff, #007bff); /* Hover effect */
+  }
+  
+  .weather-info {
+    margin-top: 20px;
+    text-align: center;
+    color: white; /* Text color */
+    border-radius: 5px; /* Rounded corners for weather info */
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+  }
+  
