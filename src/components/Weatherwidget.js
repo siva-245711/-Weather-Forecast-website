@@ -3,14 +3,14 @@ import axios from 'axios';
 import './Weatherwidget.css';
 
 function WeatherWidget() {
-  const [city, setCity] = useState('kakinada');
+  const [city, setCity] = useState('');
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchWeather = async () => {
-      setLoading(true);
+      setLoading(true);          
       setError(null);
       try {
         const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
@@ -29,31 +29,6 @@ function WeatherWidget() {
     fetchWeather();
   }, [city]);
 
-  useEffect(() => {
-    const lightningElement = document.querySelector('.lightning');
-    const thunderSound = document.getElementById('thunder-sound');
-
-    if (weather && weather.weather[0].main.toLowerCase().includes('thunderstorm')) {
-      lightningElement.style.opacity = 1;
-      playThunderSound();
-      setInterval(randomLightning, Math.random() * 5000 + 3000);
-    } else {
-      lightningElement.style.opacity = 0;
-    }
-
-    function playThunderSound() {
-      thunderSound.currentTime = 0;
-      thunderSound.play();
-    }
-
-    function randomLightning() {
-      lightningElement.style.opacity = 1;
-      setTimeout(() => {
-        lightningElement.style.opacity = 0;
-      }, 200);
-    }
-  }, [weather]);
-
   const handleCitySubmit = (e) => {
     e.preventDefault();
     const cityInput = e.target.elements.cityName.value;
@@ -63,13 +38,14 @@ function WeatherWidget() {
   };
 
   return (
-    <div className="weather-widget-container thunderstorm">
-      <div className="lightning"></div>
-      <audio id="thunder-sound" src="path-to-your-thunder-sound.mp3" preload="auto"></audio>
+    <div className="weather-widget-container">
+      <div className="container">
+        <div className="title">
+          <h1>Weather Forecast</h1>
 
-      <div className="header">
-        <h1>Weather Forecast</h1>
+        </div>
       </div>
+
       <div className="form-container">
         <form onSubmit={handleCitySubmit} className="form">
           <input
@@ -88,7 +64,7 @@ function WeatherWidget() {
       {error && <div>{error}</div>}
       {weather && (
         <div className="weather-info">
-          <h2>{weather.name}</h2>
+          <h3>{weather.name}</h3>
           <p>{weather.weather[0].description}</p>
           <p>Temperature: {weather.main.temp}°C</p>
           <img
